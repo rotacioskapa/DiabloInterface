@@ -5,6 +5,7 @@ using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
+using DiabloInterface.Gui;
 
 namespace DiabloInterface
 {
@@ -24,6 +25,7 @@ namespace DiabloInterface
 
         SettingsWindow settingsWindow;
         DebugWindow debugWindow;
+        IntegratedTimerWindow integratedTimerWindow;
 
         D2DataReader dataReader;
 
@@ -69,6 +71,12 @@ namespace DiabloInterface
 
             applySettings();
             updateAutosplits();
+
+
+            if (integratedTimerWindow == null)
+                integratedTimerWindow = new IntegratedTimerWindow(this);
+
+            integratedTimerWindow.Init();
         }
 
         public void updateAutosplits()
@@ -196,6 +204,13 @@ namespace DiabloInterface
             }
             settingsWindow.ShowDialog();
             //settingsWindow.Focus();
+        }
+
+        private void timerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (integratedTimerWindow == null)
+                integratedTimerWindow = new IntegratedTimerWindow(this);
+            integratedTimerWindow.Show();
         }
 
     }

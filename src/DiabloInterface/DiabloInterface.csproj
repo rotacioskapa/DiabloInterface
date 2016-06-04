@@ -84,6 +84,12 @@
     <Compile Include="Gui\DebugWindow.Designer.cs">
       <DependentUpon>DebugWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\IntegratedTimerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\IntegratedTimerWindow.Designer.cs">
+      <DependentUpon>IntegratedTimerWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\DebugWindow.resx">
       <DependentUpon>DebugWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\IntegratedTimerWindow.resx">
+      <DependentUpon>IntegratedTimerWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
