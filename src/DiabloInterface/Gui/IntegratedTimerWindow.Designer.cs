@@ -46,7 +46,8 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(59, 7);
+            this.label1.Location = new System.Drawing.Point(63, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(158, 31);
             this.label1.TabIndex = 1;
@@ -67,7 +68,7 @@
             "6"});
             this.listBox1.Location = new System.Drawing.Point(13, 41);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(259, 299);
+            this.listBox1.Size = new System.Drawing.Size(259, 351);
             this.listBox1.TabIndex = 3;
             // 
             // IntegratedTimerWindow
@@ -76,7 +77,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(284, 346);
+            this.ClientSize = new System.Drawing.Size(287, 405);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
@@ -85,6 +86,7 @@
             this.Name = "IntegratedTimerWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "IntegratedTimer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IntegratedTimerWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

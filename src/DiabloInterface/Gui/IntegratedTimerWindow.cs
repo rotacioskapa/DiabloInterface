@@ -13,7 +13,7 @@ namespace DiabloInterface.Gui
     public partial class IntegratedTimerWindow : Form
     {
         public const string TimeFormat = "hh\\:mm\\:ss\\.fff";
-        TimeSpan? time 
+        TimeSpan? time
         {
             get
             {
@@ -40,11 +40,11 @@ namespace DiabloInterface.Gui
             items.Clear();
             foreach (var item in _main.settings.autosplits)
             {
+                item.reached = false;
                 items.Add(new TimedItem
                 {
                     Id = item.GetHashCode(),
                     Name = item.name,
-                    reached = item.reached,
                     Time = null
                 });
             }
@@ -54,6 +54,8 @@ namespace DiabloInterface.Gui
             {
                 listBox1.Items.Add(item);
             }
+
+            updateTicker.Enabled = true;
         }
 
         public void UpdateItems()
@@ -63,6 +65,7 @@ namespace DiabloInterface.Gui
             {
                 listBox1.Items.Add(item);
             }
+
         }
 
         private void updateTicker_Tick(object sender, EventArgs e)
@@ -81,28 +84,34 @@ namespace DiabloInterface.Gui
                     updateTicker.Enabled = false;
                 }
             }
-
             var current = _main.settings.autosplits.FirstOrDefault(x => x.reached == false);
             if (current != null)
             {
-                var currentTimed =  items.FirstOrDefault(x => x.Id == current.GetHashCode());
+                var currentTimed = items.FirstOrDefault(x => x.Id == current.GetHashCode());
                 if (currentTimed != null)
                     currentTimed.Time = time.HasValue ? time.Value.ToString(TimeFormat) : "";
             }
 
             label1.Text = time.HasValue ? time.Value.ToString(TimeFormat) : "-";
+            UpdateItems();
         }
+
+        private void IntegratedTimerWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Hide();
+            e.Cancel = true;
+        }
+
     }
 
     public class TimedItem
     {
         public long? Id { get; set; }
         public string Time { get; set; }
-        public bool reached { get; set; }
         public string Name { get; set; }
         public override string ToString()
         {
-            return string.Format("{0} \t {1}", Name, Time);
+            return string.Format("{0} \t\t {1}", Name, Time);
         }
     }
 }
